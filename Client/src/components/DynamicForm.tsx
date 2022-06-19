@@ -18,7 +18,6 @@ export function DynamicForm (){
        console.log(allValue);
     }
 
-
     const handlePage = () =>{
         const values = [...allValue]
         values.push({
@@ -32,10 +31,12 @@ export function DynamicForm (){
 
     return(
         <div>
-            {allValue.length>0 && 
-             allValue.map((value,index)=>{
+            
+                <form  onSubmit={handleSubmit} > 
+                {allValue.length>0 && 
+                allValue.map((value,index)=>{
                 return(
-                <form  key={index} onSubmit={handleSubmit} >                    
+                    <div  key={index}>                   
                         <input 
                         name="username"
                         placeholder="username"
@@ -46,6 +47,7 @@ export function DynamicForm (){
                         name="age"
                         placeholder="age"
                         value={value.age}
+                        type='number'
                         onChange={ (element)=> handleUpdateValues(element,index) }
                         />
                         <input 
@@ -60,12 +62,13 @@ export function DynamicForm (){
                         value={value.job}
                         onChange={ (element)=> handleUpdateValues(element,index) }
                         />
-                    
+                    </div>
+                     )}
+                     )}
                     <button >save</button>
+                    <button onClick={()=>handlePage()}>Add</button>
                 </form>
-                )}
-                )}
-            <button onClick={()=>handlePage()}>Next</button>
+           
         </div>
     )
 }
