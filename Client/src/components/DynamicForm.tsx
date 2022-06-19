@@ -10,7 +10,7 @@ export function DynamicForm (){
     const handleUpdateValues = (element:any, index:number) => {
         const updateValues:any = [...allValue]
         updateValues[index][element.target.name] = element.target.value
-        setValue(updateValues)
+        setValue(updateValues) 
     }
 
     const handleSubmit = (e:any) =>{
